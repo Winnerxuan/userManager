@@ -3,14 +3,17 @@ package com.example.dao;
 import com.example.bean.Permission;
 import com.example.bean.PermissionExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface PermissionMapper {
     long countByExample(PermissionExample example);
 
     int deleteByExample(PermissionExample example);
 
-    int deleteByPrimaryKey(Integer permissionid);
+    int deleteByPrimaryKey(String permissionid);
 
     int insert(Permission record);
 
@@ -18,7 +21,7 @@ public interface PermissionMapper {
 
     List<Permission> selectByExample(PermissionExample example);
 
-    Permission selectByPrimaryKey(Integer permissionid);
+    Permission selectByPrimaryKey(String permissionid);
 
     int updateByExampleSelective(@Param("record") Permission record, @Param("example") PermissionExample example);
 

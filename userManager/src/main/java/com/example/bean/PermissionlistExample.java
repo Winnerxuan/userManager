@@ -114,52 +114,62 @@ public class PermissionlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidEqualTo(Integer value) {
+        public Criteria andPermissionlistidEqualTo(String value) {
             addCriterion("permissionListId =", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidNotEqualTo(Integer value) {
+        public Criteria andPermissionlistidNotEqualTo(String value) {
             addCriterion("permissionListId <>", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidGreaterThan(Integer value) {
+        public Criteria andPermissionlistidGreaterThan(String value) {
             addCriterion("permissionListId >", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPermissionlistidGreaterThanOrEqualTo(String value) {
             addCriterion("permissionListId >=", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidLessThan(Integer value) {
+        public Criteria andPermissionlistidLessThan(String value) {
             addCriterion("permissionListId <", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidLessThanOrEqualTo(Integer value) {
+        public Criteria andPermissionlistidLessThanOrEqualTo(String value) {
             addCriterion("permissionListId <=", value, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidIn(List<Integer> values) {
+        public Criteria andPermissionlistidLike(String value) {
+            addCriterion("permissionListId like", value, "permissionlistid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionlistidNotLike(String value) {
+            addCriterion("permissionListId not like", value, "permissionlistid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionlistidIn(List<String> values) {
             addCriterion("permissionListId in", values, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidNotIn(List<Integer> values) {
+        public Criteria andPermissionlistidNotIn(List<String> values) {
             addCriterion("permissionListId not in", values, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidBetween(Integer value1, Integer value2) {
+        public Criteria andPermissionlistidBetween(String value1, String value2) {
             addCriterion("permissionListId between", value1, value2, "permissionlistid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionlistidNotBetween(Integer value1, Integer value2) {
+        public Criteria andPermissionlistidNotBetween(String value1, String value2) {
             addCriterion("permissionListId not between", value1, value2, "permissionlistid");
             return (Criteria) this;
         }
@@ -244,52 +254,62 @@ public class PermissionlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidEqualTo(Integer value) {
+        public Criteria andPermissionidEqualTo(String value) {
             addCriterion("permissionId =", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidNotEqualTo(Integer value) {
+        public Criteria andPermissionidNotEqualTo(String value) {
             addCriterion("permissionId <>", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidGreaterThan(Integer value) {
+        public Criteria andPermissionidGreaterThan(String value) {
             addCriterion("permissionId >", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPermissionidGreaterThanOrEqualTo(String value) {
             addCriterion("permissionId >=", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidLessThan(Integer value) {
+        public Criteria andPermissionidLessThan(String value) {
             addCriterion("permissionId <", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidLessThanOrEqualTo(Integer value) {
+        public Criteria andPermissionidLessThanOrEqualTo(String value) {
             addCriterion("permissionId <=", value, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidIn(List<Integer> values) {
+        public Criteria andPermissionidLike(String value) {
+            addCriterion("permissionId like", value, "permissionid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionidNotLike(String value) {
+            addCriterion("permissionId not like", value, "permissionid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionidIn(List<String> values) {
             addCriterion("permissionId in", values, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidNotIn(List<Integer> values) {
+        public Criteria andPermissionidNotIn(List<String> values) {
             addCriterion("permissionId not in", values, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidBetween(Integer value1, Integer value2) {
+        public Criteria andPermissionidBetween(String value1, String value2) {
             addCriterion("permissionId between", value1, value2, "permissionid");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionidNotBetween(Integer value1, Integer value2) {
+        public Criteria andPermissionidNotBetween(String value1, String value2) {
             addCriterion("permissionId not between", value1, value2, "permissionid");
             return (Criteria) this;
         }

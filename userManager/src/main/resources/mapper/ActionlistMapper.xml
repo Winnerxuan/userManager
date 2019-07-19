@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.example.bean.Actionlist">
     <id column="actionList" jdbcType="INTEGER" property="actionlist" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="permissionId" jdbcType="INTEGER" property="permissionid" />
+    <result column="permissionId" jdbcType="VARCHAR" property="permissionid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.example.bean.Actionlist">
     insert into actionlist (actionList, name, permissionId
       )
-    values (#{actionlist,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{permissionid,jdbcType=INTEGER}
+    values (#{actionlist,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{permissionid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.bean.Actionlist">
@@ -124,7 +124,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="permissionid != null">
-        #{permissionid,jdbcType=INTEGER},
+        #{permissionid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,7 +144,7 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.permissionid != null">
-        permissionId = #{record.permissionid,jdbcType=INTEGER},
+        permissionId = #{record.permissionid,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -155,7 +155,7 @@
     update actionlist
     set actionList = #{record.actionlist,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      permissionId = #{record.permissionid,jdbcType=INTEGER}
+      permissionId = #{record.permissionid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,7 +167,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="permissionid != null">
-        permissionId = #{permissionid,jdbcType=INTEGER},
+        permissionId = #{permissionid,jdbcType=VARCHAR},
       </if>
     </set>
     where actionList = #{actionlist,jdbcType=INTEGER}
@@ -175,7 +175,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.bean.Actionlist">
     update actionlist
     set name = #{name,jdbcType=VARCHAR},
-      permissionId = #{permissionid,jdbcType=INTEGER}
+      permissionId = #{permissionid,jdbcType=VARCHAR}
     where actionList = #{actionlist,jdbcType=INTEGER}
   </update>
 </mapper>

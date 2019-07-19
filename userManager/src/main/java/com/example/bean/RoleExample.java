@@ -114,52 +114,62 @@ public class RoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleidEqualTo(Integer value) {
+        public Criteria andRoleidEqualTo(String value) {
             addCriterion("roleId =", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotEqualTo(Integer value) {
+        public Criteria andRoleidNotEqualTo(String value) {
             addCriterion("roleId <>", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidGreaterThan(Integer value) {
+        public Criteria andRoleidGreaterThan(String value) {
             addCriterion("roleId >", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRoleidGreaterThanOrEqualTo(String value) {
             addCriterion("roleId >=", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidLessThan(Integer value) {
+        public Criteria andRoleidLessThan(String value) {
             addCriterion("roleId <", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidLessThanOrEqualTo(Integer value) {
+        public Criteria andRoleidLessThanOrEqualTo(String value) {
             addCriterion("roleId <=", value, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidIn(List<Integer> values) {
+        public Criteria andRoleidLike(String value) {
+            addCriterion("roleId like", value, "roleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoleidNotLike(String value) {
+            addCriterion("roleId not like", value, "roleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRoleidIn(List<String> values) {
             addCriterion("roleId in", values, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotIn(List<Integer> values) {
+        public Criteria andRoleidNotIn(List<String> values) {
             addCriterion("roleId not in", values, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidBetween(Integer value1, Integer value2) {
+        public Criteria andRoleidBetween(String value1, String value2) {
             addCriterion("roleId between", value1, value2, "roleid");
             return (Criteria) this;
         }
 
-        public Criteria andRoleidNotBetween(Integer value1, Integer value2) {
+        public Criteria andRoleidNotBetween(String value1, String value2) {
             addCriterion("roleId not between", value1, value2, "roleid");
             return (Criteria) this;
         }

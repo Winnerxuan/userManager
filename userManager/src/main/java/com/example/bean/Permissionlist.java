@@ -3,20 +3,20 @@ package com.example.bean;
 import java.io.Serializable;
 
 public class Permissionlist implements Serializable {
-    private Integer permissionlistid;
+    private String permissionlistid;
 
     private String name;
 
-    private Integer permissionid;
+    private String permissionid;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getPermissionlistid() {
+    public String getPermissionlistid() {
         return permissionlistid;
     }
 
-    public void setPermissionlistid(Integer permissionlistid) {
-        this.permissionlistid = permissionlistid;
+    public void setPermissionlistid(String permissionlistid) {
+        this.permissionlistid = permissionlistid == null ? null : permissionlistid.trim();
     }
 
     public String getName() {
@@ -27,12 +27,12 @@ public class Permissionlist implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPermissionid() {
+    public String getPermissionid() {
         return permissionid;
     }
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
+    public void setPermissionid(String permissionid) {
+        this.permissionid = permissionid == null ? null : permissionid.trim();
     }
 
     @Override

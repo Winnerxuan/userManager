@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+<head>
+  <title>登录</title>
+  
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+
+<body >
+  
+   <script type="text/javascript">
+   
+   $(document).ready(function(){
+	   var redirect_uri = "http://localhost:8080/authority/resourceBack";
+       var state = "xxxx";
+       var client_id = "TESTdemo";
+       var response_type = "code";
+	   url = "http://bamuat.cndi.com:80/idp/oauth2/authorize?redirect_uri="+ redirect_uri + "&state=" + state + "&client_id=" + client_id + "&response_type=" + response_type;//此处拼接内容
+       window.location.href = url;
+       });
+  </script>
+</body>
+</html>

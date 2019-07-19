@@ -1,72 +1,116 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8" />
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>登录</title>
+  
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
 </head>
-<body>
-vue, helloWorld!!!
-<div id="app">
-  {{ message }}
-</div>
+<body >
 
-<div id="app-2">
-  <span v-bind:title="message">
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  </span>
-</div>
 
-<div id="app-4">
-  <ol>
-    <li v-for="todo in todos">
-      {{ todo.text }}
-    </li>
-  </ol>
-</div>
-
-<div id="app-5">
-  <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">反转消息</button>
-</div>
-
+   state: <input   id="state" name="state" th:value="${state}"/>
+   code: <input   id="code" name="code" th:value="${code}"/>
+   client_id: <input   id="client_id" name="client_id" value="TESTdemo"/>
+   response_type: <input   id="response_type" name="response_type" value="code"/>
+   grant_type: <input   id="grant_type" name="grant_type" value="authorization_code"/>
+   client_secret: <input   id="client_secret" name="client_secret" value="0aa6016600c34f1883bf194ce19f9a9e"/>
+   
+    <br>
+    <br>
+    <br>
+    <button style="margin:10px;" onclick="getToken()" type="button">getToken</button>
+    <button style="margin:10px;" onclick="refreshToken()" type="button">refreshToken</button>
+	<button style="margin:10px;" onclick="checkTokenValid()" type="button">checkTokenValid</button>
+    <button style="margin:10px;" onclick="getUserInfo()" type="button">getUserInfo</button>
+    <button style="margin:10px;" onclick="revokeToken()" type="button">revokeToken</button>
+	  
+   <script type="text/javascript">
+   
+   var client_id = $("#client_id").val();
+   var code = $("#code").val();
+   var client_secret = $("#client_secret").val();
+   
+   	var uid = null;
+   	var expires_in = null;
+   	var refresh_token = null;
+   	var access_token = null;
+    
+    function getToken() {
+    	var grant_type = "authorization_code";
+        $.ajax({
+            url: "http://bamuat.cndi.com:80/idp/oauth2/getToken",
+            type: "POST",
+            data: "client_id=" + client_id + "&grant_type=" + grant_type + "&code=" + code + "&client_secret=" + client_secret,
+            success: function (data) {
+            	/* var obj = eval("("+data+")"); */
+            	var obj = JSON.parse(data);
+            	alert(data);
+            	uid = obj.uid;
+            	expires_in = obj.expires_in;
+            	refresh_token = obj.refresh_token;
+            	access_token = obj.access_token;
+            }
+        });
+    }
+    
+    function refreshToken() {
+    	var grant_type = "refresh_token";
+        $.ajax({
+            url: "http://bamuat.cndi.com:80/idp/oauth2/refreshToken",
+            type: "POST",
+            data: "client_id=" + client_id + "&grant_type=" + grant_type + "&client_secret=" + client_secret + "&refresh_token=" + refresh_token,
+            success: function (data) {
+            	/* var obj = eval("("+data+")"); */
+            	var obj = JSON.parse(data); 
+            	alert(data);
+            	uid = obj.uid;
+            	expires_in = obj.expires_in;
+            	refresh_token = obj.refresh_token;
+            	access_token = obj.access_token;
+            }
+        });
+    }
+    
+    function checkTokenValid() {
+        $.ajax({
+            url: "http://bamuat.cndi.com:80/idp/oauth2/checkTokenValid",
+            type: "GET",
+            data: "access_token=" + access_token,
+            success: function (data) {
+            	/* var obj = eval("("+data+")"); */
+            	var obj2 = JSON.parse(data); 
+            	alert(data);
+            	
+            }
+        });
+    }
+    
+    function getUserInfo() {
+        $.ajax({
+            url: "http://bamuat.cndi.com:80/idp/oauth2/getUserInfo",
+            type: "get",
+            data: "client_id=" + client_id + "&access_token=" + access_token,
+            success: function (data) {
+            	/* var obj = eval("("+data+")"); */
+            	var obj2 = JSON.parse(data); 
+            	alert(data);
+            }
+        });
+    }
+    
+    function revokeToken() {
+        $.ajax({
+            url: "http://bamuat.cndi.com:80/idp/oauth2/revokeToken",
+            type: "GET",
+            data: "access_token=" + access_token,
+            success: function (data) {
+            	/* var obj = eval("("+data+")"); */
+            	var obj2 = JSON.parse(data); 
+            	alert(data);
+            }
+        });
+    }
+  </script>
 </body>
-<script type="text/javascript">
-	var app = new Vue({
-	  el: '#app',
-	  data: {
-	    message: 'Hello Vue!'
-		  }
-		})
-	var app2 = new Vue({
-		  el: '#app-2',
-		  data: {
-		    message: '页面加载于 ' + new Date().toLocaleString()
-		  }
-		})
-	
-	var app4 = new Vue({
-		  el: '#app-4',
-		  data: {
-		    todos: [
-		      { text: '学习 JavaScript' },
-		      { text: '学习 Vue' },
-		      { text: '整个牛项目' }
-		    ]
-		  }
-		})
-	
-	var app5 = new Vue({
-		  el: '#app-5',
-		  data: {
-		    message: 'Hello Vue.js!'
-		  },
-		  methods: {
-		    reverseMessage: function () {
-		      this.message = this.message.split('').reverse().join('')
-		    }
-		  }
-		})
-	
-</script>
 </html>

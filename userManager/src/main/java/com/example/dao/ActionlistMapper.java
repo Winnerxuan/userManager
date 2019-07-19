@@ -3,8 +3,11 @@ package com.example.dao;
 import com.example.bean.Actionlist;
 import com.example.bean.ActionlistExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ActionlistMapper {
     long countByExample(ActionlistExample example);
 

@@ -3,26 +3,26 @@ package com.example.bean;
 import java.io.Serializable;
 
 public class Permission implements Serializable {
-    private Integer permissionid;
+    private String permissionid;
 
-    private Integer roleid;
+    private String roleid;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getPermissionid() {
+    public String getPermissionid() {
         return permissionid;
     }
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
+    public void setPermissionid(String permissionid) {
+        this.permissionid = permissionid == null ? null : permissionid.trim();
     }
 
-    public Integer getRoleid() {
+    public String getRoleid() {
         return roleid;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 
     @Override

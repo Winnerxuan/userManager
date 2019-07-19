@@ -12,4 +12,6 @@ public interface UserService {
 
 	void addRole(Role role);
 
+	User userLogin(User user);
+
 }

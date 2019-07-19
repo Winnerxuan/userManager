@@ -3,7 +3,7 @@ package com.example.bean;
 import java.io.Serializable;
 
 public class Role implements Serializable {
-    private Integer roleid;
+    private String roleid;
 
     private Integer rolescode;
 
@@ -13,12 +13,12 @@ public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getRoleid() {
+    public String getRoleid() {
         return roleid;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 
     public Integer getRolescode() {

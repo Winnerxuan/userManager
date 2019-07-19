@@ -7,7 +7,7 @@ public class Actionlist implements Serializable {
 
     private String name;
 
-    private Integer permissionid;
+    private String permissionid;
 
     private static final long serialVersionUID = 1L;
 
@@ -27,12 +27,12 @@ public class Actionlist implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPermissionid() {
+    public String getPermissionid() {
         return permissionid;
     }
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
+    public void setPermissionid(String permissionid) {
+        this.permissionid = permissionid == null ? null : permissionid.trim();
     }
 
     @Override

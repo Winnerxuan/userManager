@@ -27,4 +27,10 @@ public class UserServiceImp implements UserService{
 		roleMapper.insert(role);
 	}
 
+	@Override
+	public User userLogin(User user) {
+		return userMapper.userLogin(user);
+	}
+
+
 }

@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.example.bean.User">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="avater" jdbcType="VARCHAR" property="avater" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -71,8 +72,24 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, username, avater, status, telephone, createTime, token, password
+    id, name, email, username, avater, status, telephone, createTime, token, password
   </sql>
+  <select id="userLogin" parameterType="com.example.bean.User" resultType="com.example.bean.User">
+	select * from user where 1=1
+	<if test="email!=null and email!=''">
+		and email=#{email}
+	</if>
+	<if test="username!=null and username!=''">
+		and username=#{username}
+	</if>
+	<if test="telephone!=null and telephone!=''">
+		and telephone=#{telephone}
+	</if>
+	<if test="password!=null and password!=''">
+		and password=#{password}
+	</if>
+  </select>
+  
   <select id="selectByExample" parameterType="com.example.bean.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -104,14 +121,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.bean.User">
-    insert into user (id, name, username, 
-      avater, status, telephone, 
-      createTime, token, password
-      )
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{avater,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{token,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+    insert into user (id, name, email, 
+      username, avater, status, 
+      telephone, createTime, token, 
+      password)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{avater,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{token,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.bean.User">
     insert into user
@@ -121,6 +138,9 @@
       </if>
       <if test="name != null">
         name,
+      </if>
+      <if test="email != null">
+        email,
       </if>
       <if test="username != null">
         username,
@@ -150,6 +170,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -189,6 +212,9 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
@@ -219,6 +245,7 @@
     update user
     set id = #{record.id,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
       avater = #{record.avater,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
@@ -235,6 +262,9 @@
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -263,6 +293,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.bean.User">
     update user
     set name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       avater = #{avater,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.RoleMapper">
   <resultMap id="BaseResultMap" type="com.example.bean.Role">
-    <id column="roleId" jdbcType="INTEGER" property="roleid" />
+    <id column="roleId" jdbcType="VARCHAR" property="roleid" />
     <result column="rolesCode" jdbcType="INTEGER" property="rolescode" />
     <result column="rolesName" jdbcType="VARCHAR" property="rolesname" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where roleId = #{roleid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where roleId = #{roleid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.example.bean.RoleExample">
     delete from role
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.example.bean.Role">
     insert into role (roleId, rolesCode, rolesName, 
       userId)
-    values (#{roleid,jdbcType=INTEGER}, #{rolescode,jdbcType=INTEGER}, #{rolesname,jdbcType=VARCHAR}, 
+    values (#{roleid,jdbcType=VARCHAR}, #{rolescode,jdbcType=INTEGER}, #{rolesname,jdbcType=VARCHAR}, 
       #{userid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.bean.Role">
@@ -122,7 +122,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
+        #{roleid,jdbcType=VARCHAR},
       </if>
       <if test="rolescode != null">
         #{rolescode,jdbcType=INTEGER},
@@ -145,7 +145,7 @@
     update role
     <set>
       <if test="record.roleid != null">
-        roleId = #{record.roleid,jdbcType=INTEGER},
+        roleId = #{record.roleid,jdbcType=VARCHAR},
       </if>
       <if test="record.rolescode != null">
         rolesCode = #{record.rolescode,jdbcType=INTEGER},
@@ -163,7 +163,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update role
-    set roleId = #{record.roleid,jdbcType=INTEGER},
+    set roleId = #{record.roleid,jdbcType=VARCHAR},
       rolesCode = #{record.rolescode,jdbcType=INTEGER},
       rolesName = #{record.rolesname,jdbcType=VARCHAR},
       userId = #{record.userid,jdbcType=VARCHAR}
@@ -184,13 +184,13 @@
         userId = #{userid,jdbcType=VARCHAR},
       </if>
     </set>
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where roleId = #{roleid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.bean.Role">
     update role
     set rolesCode = #{rolescode,jdbcType=INTEGER},
       rolesName = #{rolesname,jdbcType=VARCHAR},
       userId = #{userid,jdbcType=VARCHAR}
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where roleId = #{roleid,jdbcType=VARCHAR}
   </update>
 </mapper>
