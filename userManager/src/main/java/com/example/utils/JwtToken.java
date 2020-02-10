@@ -10,12 +10,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.example.bean.User;
 
 public class JwtToken {
 	
 	public static String SECRET = "Winner";
 	
-	public static String createToken() throws Exception{
+	public static String createToken(User user) throws Exception{
 		
 		//签发时间
 		Date iatDate = new Date();
@@ -30,8 +31,7 @@ public class JwtToken {
 		map.put("typ", "JWT");
 		String token = JWT.create()
 				.withHeader(map)
-				.withClaim("username", "001admin")
-				.withClaim("telephone", "18316632008")
+				.withClaim("userid", user.getId())
 				.withClaim("UA", "UA123456")
 				.withExpiresAt(expiresDate) //过期时间
 				.withIssuedAt(iatDate) //签发时间

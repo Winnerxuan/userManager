@@ -1,8 +1,5 @@
 /* CSS Document */
-
-
-#calendarPanel
-{
+#calendarPanel {
 	position: absolute;
 	visibility: hidden;
 	z-index: 9999;
@@ -12,12 +9,11 @@
 	padding-top: 3px;
 }
 
-.calendarhead
-{
+.calendarhead {
 	background: #ffffff;
 }
-#calendarPanel .month input
-{
+
+#calendarPanel .month input {
 	width: 18px;
 	height: 20px;
 	border: 0;
@@ -26,30 +22,28 @@
 	margin: 0 3px;
 	padding-bottom: 5px;
 }
-.year select
-{
+
+.year select {
 	font-size: 12px;
 }
-#calendarTable
-{ 
- background-color:#e8f5fc;
+
+#calendarTable {
+	background-color: #e8f5fc;
 }
 
-#calendarPanel .Weeks th
-{
-	  
+#calendarPanel .Weeks th {
 	font-weight: bold;
 	font-size: 12px;
 }
-#calendarPanel .date td
-{
+
+#calendarPanel .date td {
 	cursor: default;
 	width: 20px;
 	font-size: 14px;
 }
-#calendarClear, #calendarToday, #calendarClose
-{
-	width: 100%; 
+
+#calendarClear, #calendarToday, #calendarClose {
+	width: 100%;
 	font-size: 12px;
 	background: #FFFFFF;
 	border: 0;
